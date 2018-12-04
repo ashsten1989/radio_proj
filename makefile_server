@@ -1,0 +1,17 @@
+
+COMP=gcc 
+CFLAG=-c
+LDFLAGS=-pthread
+
+all: radio_server
+
+TCP_receiver: radio_server.o
+	$(COMP) radio_server.o -o radio_server
+
+
+TCP_receiver.o: radio_server.c
+	$(COMP) $(CFLAG) radio_server.c -o $(LDFLAGS) radio_server.o
+
+
+clean:
+	rm *.o radio_server
